@@ -1,25 +1,39 @@
+/* font google */
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+
+/* reset */
+
 * {
   margin: 0px;
   padding: 0px;
 }
 
+/* styling */
+
 body {
   background-color: #1c0c3d;
 }
 
-/* styling */
 .container {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
   padding: 0 20px;
+  font-family: "PT Sans Narrow", sans-serif;
   /* border: 2px solid red; */
+}
+
+.icontainer {
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
   color: white;
   text-align: center;
   margin-bottom: 20px;
+  font-family: cursive;
+  text-decoration: underline;
 }
 
 #input {
@@ -41,6 +55,7 @@ h1 {
   /* padding: 10px; */
   width: 3%;
   transition: 0.3s all ease-in-out;
+  margin-left: 2px;
 }
 
 .container > ol {
@@ -69,9 +84,6 @@ h1 {
 /* Pseudo Class */
 #input:hover,
 #input:focus {
-  width: 94%;
-  border: 0;
-  padding: 15px 15px;
   /* padding: 10px 0px; */
   color: ghostwhite;
   background-color: #f5ae43;
@@ -88,11 +100,9 @@ h1 {
   color: ghostwhite;
   background-color: #fb9800;
   border: 0;
-  padding: 15px 15px;
   /* padding: 10px; */
   box-shadow: 0px 0px 10px 1px #fb9800;
   cursor: pointer;
-  width: 3%;
 }
 
 .list-style:hover {
@@ -100,4 +110,15 @@ h1 {
   color: ghostwhite;
   background-color: #f5ae43;
   cursor: pointer;
+}
+
+/* breakpoint */
+@media screen and (min-width: 320px) and (max-width: 2000px) {
+  #input {
+    width: 75%;
+  }
+
+  #btn {
+    width: 12%;
+  }
 }
