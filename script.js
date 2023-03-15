@@ -3,6 +3,18 @@ const input = document.getElementById("input");
 const btn = document.getElementById("btn");
 const todo = document.querySelector(".todo");
 
+// object
+// todos = {};
+
+// local storage
+// function webstorage(execution, item, status = false) {
+//   switch (execution) {
+//     case "ADD":
+//       todos.execution = item;
+//       console.log(todos);
+//   }
+// };
+
 // Add List
 btn.addEventListener("click", function () {
   let li = `<li class='list-style' onclick='done(this)'><span>${input.value}</span><span class='delButton' onclick="remove(this)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
@@ -10,6 +22,8 @@ btn.addEventListener("click", function () {
 </svg></span></li>`;
 
   todo.insertAdjacentHTML("afterbegin", li);
+
+  // webstorage('ADD',)
 
   // Restart Field
   input.value = "";
