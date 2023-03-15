@@ -7,23 +7,40 @@ body {
   background-color: #1c0c3d;
 }
 
+/* styling */
 .container {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  padding: 0 20px;
   /* border: 2px solid red; */
 }
 
+h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 #input {
+  border-radius: 3px;
   background-color: #fb9800;
   border: 0;
-  padding: 10px 50px;
+  padding: 15px 15px;
+  /* padding: 10px 0px; */
+  width: 94%;
+  transition: 0.3s all ease-in-out;
+  outline: none;
 }
 
 #btn {
+  border-radius: 3px;
   background-color: #fb9800;
   border: 0;
-  padding: 10px;
+  padding: 15px 15px;
+  /* padding: 10px; */
+  width: 3%;
+  transition: 0.3s all ease-in-out;
 }
 
 .container > ol {
@@ -41,15 +58,46 @@ body {
   background-color: #fb9800;
   padding: 15px 15px;
   box-sizing: border-box;
-  box-shadow: 0px 0px 10px 0px #fb9800;
   transition: 0.3s all ease-in-out;
-}
-
-.list-style:hover {
-  background-color: white;
-  cursor: pointer;
+  margin-top: 15px;
 }
 
 .line-through {
   text-decoration: line-through;
+}
+
+/* Pseudo Class */
+#input:hover,
+#input:focus {
+  width: 94%;
+  border: 0;
+  padding: 15px 15px;
+  /* padding: 10px 0px; */
+  color: ghostwhite;
+  background-color: #f5ae43;
+  box-shadow: 0px 0px 10px 1px #fb9800;
+  cursor: pointer;
+  /* outline: none; */
+}
+
+#input::placeholder {
+  color: #1c0c3d;
+}
+
+#btn:hover {
+  color: ghostwhite;
+  background-color: #fb9800;
+  border: 0;
+  padding: 15px 15px;
+  /* padding: 10px; */
+  box-shadow: 0px 0px 10px 1px #fb9800;
+  cursor: pointer;
+  width: 3%;
+}
+
+.list-style:hover {
+  box-shadow: 0px 0px 10px 1px #fb9800;
+  color: ghostwhite;
+  background-color: #f5ae43;
+  cursor: pointer;
 }
