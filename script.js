@@ -1,40 +1,65 @@
+let list = {};
+const SaveList = "SaveList";
+
 // Dom
 const input = document.getElementById("input");
 const btn = document.getElementById("btn");
 const todo = document.querySelector(".todo");
 
-// object
-// todos = {};
+function saveData(command, item, status = false) {
+  switch (command) {
+    case "ADD":
+    case "UPDATE":
+      list[item] = status;
+      break;
+    case "DELETE":
+      delete list[item];
+      break;
+    default:
+      break;
+  }
 
-// local storage
-// function webstorage(execution, item, status = false) {
-//   switch (execution) {
-//     case "ADD":
-//       todos.execution = item;
-//       console.log(todos);
-//   }
-// };
+  localStorage.setItem(SaveList, JSON.stringify(list));
+  return;
+}
+
+// Check
+if ((todoFromLocal = localStorage.getItem(SaveList))) {
+  list = JSON.parse(todoFromLocal);
+
+  for (let key in list) {
+    createList(key, list[key]);
+  }
+}
 
 // Add List
 btn.addEventListener("click", function () {
-  let li = `<li class='list-style' onclick='done(this)'><span>${input.value}</span><span class='delButton' onclick="remove(this)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  if (input.value !== "") {
+    saveData("ADD", input.value);
+    createList(input.value);
+
+    // Restart Field
+    input.value = "";
+  }
+});
+
+function createList(text, status = false) {
+  let ifDone = status ? "line-through" : "";
+  let li = `<li class='list-style ${ifDone}' onclick='done(this)'><span>${text}</span><span class='delButton' onclick="remove(this)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
   <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></span></li>`;
+  </svg></span></li>`;
 
   todo.insertAdjacentHTML("afterbegin", li);
-
-  // webstorage('ADD',)
-
-  // Restart Field
-  input.value = "";
-});
+}
 
 // Done List
 function done(el) {
-  el.classList.toggle("line-through");
+  let status = el.classList.toggle("line-through");
+  saveData("UPDATE", el.innerText, status);
 }
 
 // Remove List
 function remove(el) {
   el.parentElement.remove();
+  saveData("DELETE", el.previousElementSibling.innerText.trim());
 }
